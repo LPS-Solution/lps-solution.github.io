@@ -10,16 +10,22 @@ let answersStar = ['', '', '', ''];
 
 function getButtonClass(option) {
   if (answers[currentQuestion] === option) {
-    return 'w-full bg-[#0f513a] text-white py-4 rounded-lg text-xl hover:bg-[#0f513a] text-white font-Noto';
+    return 'w-full bg-[#0f513a] text-white py-2 rounded-lg text-xl hover:bg-[#0f513a] text-white font-Noto';
   }
-  return 'w-full bg-[#ff668f25] text-[#ff668f] py-4 rounded-lg text-xl hover:bg-gray-300 font-Noto';
+  return 'w-full bg-[#ff668f25] text-[#ff668f] py-2 rounded-lg text-xl hover:bg-gray-300 font-Noto';
+}
+function getButtonNone(option) {
+  if (answers[currentQuestion] === option) {
+    return 'w-full bg-[#0f513a] text-white py-2 rounded-lg text-xl hover:bg-[#0f513a] text-white font-Noto';
+  }
+  return 'w-full bg-[#808080] text-[#000] py-2 rounded-lg text-xl hover:bg-gray-300 font-Noto';
 }
 
 function getButtonClassStar(option) {
   if (answersStar[currentQuestion] === option) {
     return 'w-[15%] bg-[#0f513a] text-white p-2 rounded-lg text-xl hover:bg-[#0f513a] text-white font-Noto';
   }
-  return 'w-[15%] bg-[#ff668f25] text-[#ff668f] p-4 rounded-lg text-xl hover:bg-gray-300 font-Noto';
+  return 'w-[15%] bg-[#ff668f00] text-[#ff668f] p-4 rounded-lg text-xl hover:bg-gray-300 font-Noto';
 }
 
 function renderPage() {
@@ -52,25 +58,29 @@ function renderStartPage() {
   /*<div class="flex flex-col h-full p-8">*/
   app.innerHTML = `
          <div class="flex flex-col items-center h-full p-8">
-            <img src="logo.png" alt="Logo" class="mb-8 w-40 self-center">
+            <img src="logo.png" alt="Logo" class="mb-8 w-28 self-center">
        
-        
+            <h1 class="text-2xl font-bold text-center mb-6">ADORA service feedback</h1>
 
-            <h1 class="text-4xl font-bold text-center mb-6">ADORA service feedback</h1>
-
-            <p class="text-2xl text-center mb-12 text-[#ff668f]">
-            We believe that 'Nothing is more important than the quality of service"
-            <br>
-            Thank you for taking the time to help improve the quality of our service.
-            Don't worry!!! The staff cannot know your identity.
+            <p class="text-xl text-center mb-12 text-[#ff668f]">
+            We believe that 'Nothing is more important than
+            the quality of service
+            Thank you for taking the time to help improve
+            the quality of our service.
+            Don't worry!!! The staff cannot know your
+            identity.
             <br><br>
-            Please certainly give us honest feedback for sustainable service quality development.
+            Please certainly give us honest feedback for
+            sustainable service quality development.
             <br><br>
-            ไม่ต้องกังวล!!! พนักงานของเราไม่สามารถทราบถึงตัวตนของผู้ให้ feedback ได้ คุณลูกค้าสามารถให้คำติชมอย่างตรงไปตรงมาเพื่อการพัฒนาบริการอย่างยั่งยืน
+            ไม่ต้องกังวล!!! พนักงานของเราไม่สามารถทราบถึงตัว
+            ตนของผู้ให้ feedback ได้
+            คุณลุกค้าสามารถให้คำติชมอย่างตรงไปตรงมาเพื่อ
+            การพัฒนาบริการอย่างยั่งยืน
             </p>
             
             <div class="w-full flex justify-center">
-            <button onclick="startSurvey()" class="w-full  mb-6 rounded-full max-w-md bg-[#0f513a] text-white py-4 text-2xl  hover:bg-pink-500">Start</button>
+            <button onclick="startSurvey()" class="w-full  mb-6 rounded-full max-w-md bg-[#0f513a] text-white py-2 text-xl  hover:bg-pink-500">Start</button>
 
             </div>
 
@@ -92,8 +102,8 @@ function renderQuestionPage1() {
   app.innerHTML = `
           <div class="flex flex-col h-full p-8">
               <img src="logo.png" alt="Logo" class="mb-8 w-24 self-center">
-              <h2 class="text-3xl font-bold mb-8 text-center">${'Type of service? ประเภทบริการ'}</h2>
-              <div class="space-y-4 mb-8 flex-grow">
+              <h2 class="text-xl font-bold mb-8 text-center">${'Type of service? ประเภทบริการ'}</h2>
+              <div class="space-y-2 mb-8 flex-grow">
                   ${options
                     .map(
                       (option) => `
@@ -109,16 +119,16 @@ function renderQuestionPage1() {
               <div class="flex justify-between items-center">
                   ${
                     currentQuestion === 0
-                      ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-3 rounded-full text-xl hover:bg-gray-400">Home</button>`
-                      : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-3 rounded-full text-xl hover:bg-gray-400" ${
+                      ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400">Home</button>`
+                      : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400" ${
                           currentQuestion === 0 ? 'disabled' : ''
                         }>Previous</button>`
                   }
                   
-                  <div class="w-1/2 bg-gray-200 rounded-full h-4">
+                  <div class="w-1/2 bg-gray-200 rounded-full h-4 mx-2">
                       <div class="bg-pink-600 h-4 rounded-full" style="width: ${progress}%"></div>
                   </div>
-                  <button onclick="nextQuestion()" class="bg-[#0f513a] text-white px-6 py-3 rounded-full text-xl hover:bg-pink-600">
+                  <button onclick="nextQuestion()" class="bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
                       ${currentQuestion === questions - 1 ? 'Submit' : 'Next'}
                   </button>
               </div>
@@ -132,21 +142,29 @@ function renderQuestionPage2() {
     'K.Jane คุณแจน',
     'K.Pim คุณแจน',
     'K.Namwaan คุณแจน',
-
+    'None',
     'Other อื่นๆ',
   ];
 
   app.innerHTML = `
             <div class="flex flex-col h-full p-8">
                 <img src="logo.png" alt="Logo" class="mb-8 w-24 self-center">
-                <h2 class="text-3xl font-bold mb-8 text-center">${'Staff’s name? ชื่อพนักงาน'}</h2>
-                <div class="space-y-4 mb-8 flex-grow">
+                <h2 class="text-xl font-bold mb-8 text-center">${'Staff’s name? ชื่อพนักงาน'}</h2>
+                <div class="space-y-2 mb-8 flex-grow">
                     ${options
-                      .map(
-                        (option) => `
+                      .map((option) =>
+                        option == 'None'
+                          ? `
+                        <button onclick="answerQuestion('${option}')" class="${getButtonNone(
+                              option
+                            )}">
+                            ${option}
+                        </button>
+                    `
+                          : `
                         <button onclick="answerQuestion('${option}')" class="${getButtonClass(
-                          option
-                        )}">
+                              option
+                            )}">
                             ${option}
                         </button>
                     `
@@ -160,15 +178,16 @@ function renderQuestionPage2() {
                       
                 </div>
                 
-                <h2 class="text-3xl font-bold mb-8 text-center">Rate if Service คะแนนการบริการ</h2>
-                <div class="w-full space-y-4 mb-8 flex-grow text-center">
+                <h2 class="text-xl font-bold mb-8 text-center">Rate if Service คะแนนการบริการ</h2>
+                <div class="w-full space-y-2 mb-8 flex-grow text-center">
                     ${['1', '2', '3', '4', '5']
                       .map(
                         (option) => `
                         <button onclick="answerQuestionStar('${option}')" class="${getButtonClassStar(
                           option
                         )}">
-                            <img src="${option}.png" alt="star" class="">
+                            <img  src="star.png" alt="star" class="">
+                            ${option}
                         </button>
                     `
                       )
@@ -178,22 +197,22 @@ function renderQuestionPage2() {
                 <div class="flex justify-between items-center">
                     ${
                       currentQuestion === 0
-                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-3 rounded-full text-xl hover:bg-gray-400">Home</button>`
-                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-3 rounded-full text-xl hover:bg-gray-400" ${
+                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400">Home</button>`
+                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400" ${
                             currentQuestion === 0 ? 'disabled' : ''
                           }>Previous</button>`
                     }
                     
-                    <div class="w-1/2 bg-gray-200 rounded-full h-4">
+                    <div class="w-1/2 bg-gray-200 rounded-full h-4 mx-2">
                         <div class="bg-pink-600 h-4 rounded-full" style="width: ${progress}%"></div>
                     </div>
                     ${
                       answers[currentQuestion] == '' ||
                       answersStar[currentQuestion] == ''
-                        ? `<button  class=" bg-[#0f513a] text-white px-6 py-3 rounded-full text-xl hover:bg-pink-600">
+                        ? `<button  class=" bg-[#0f513a] text-white px-6 py-2 rounded-full text-xl hover:bg-pink-600">
                        Required
                     </button>`
-                        : `<button onclick="nextQuestion()"  class=" bg-[#0f513a] text-white px-6 py-3 rounded-full text-xl hover:bg-pink-600">
+                        : `<button onclick="nextQuestion()"  class=" bg-[#0f513a] text-white px-6 py-2 rounded-full text-xl hover:bg-pink-600">
                         ${currentQuestion === questions - 1 ? 'Submit' : 'Next'}
                     </button>`
                     }
@@ -209,24 +228,32 @@ function renderQuestionPage3() {
     'Dr.Bow หมอโบว์',
     'Dr.Namcha หมอน้ำชา',
     'Dr.Kay หมอเคย์',
-
+    'None',
     'Other อื่นๆ',
   ];
 
   app.innerHTML = `
             <div class="flex flex-col h-full p-8">
                 <img src="logo.png" alt="Logo" class="mb-8 w-24 self-center">
-                <h2 class="text-3xl font-bold mb-8 text-center">${'Doctor’s name? ชื่อคณุหมอ'}</h2>
-                <div class="space-y-4 mb-8 flex-grow">
+                <h2 class="text-xl font-bold mb-8 text-center">${'Doctor’s name? ชื่อคณุหมอ'}</h2>
+                <div class="space-y-2 mb-8 flex-grow">
                     ${options
-                      .map(
-                        (option) => `
-                        <button onclick="answerQuestion('${option}')" class="${getButtonClass(
-                          option
-                        )}">
-                            ${option}
-                        </button>
-                    `
+                      .map((option) =>
+                        option == 'None'
+                          ? `
+                      <button onclick="answerQuestion('${option}')" class="${getButtonNone(
+                              option
+                            )}">
+                          ${option}
+                      </button>
+                  `
+                          : `
+                      <button onclick="answerQuestion('${option}')" class="${getButtonClass(
+                              option
+                            )}">
+                          ${option}
+                      </button>
+                  `
                       )
                       .join('')}
                       ${
@@ -236,15 +263,16 @@ function renderQuestionPage3() {
                       }
                 </div>
                 
-                <h2 class="text-3xl font-bold mb-8 text-center">Rate if Service คะแนนการบริการ</h2>
-                <div class="w-full space-y-4 mb-8 flex-grow text-center">
+                <h2 class="text-xl font-bold mb-8 text-center">Rate if Service คะแนนการบริการ</h2>
+                <div class="w-full space-y-2 mb-8 flex-grow text-center">
                     ${['1', '2', '3', '4', '5']
                       .map(
                         (option) => `
                         <button onclick="answerQuestionStar('${option}')" class="${getButtonClassStar(
                           option
                         )}">
-                            <img src="${option}.png" alt="star" class="">
+                            <img  src="star.png" alt="star" class="">
+                            ${option}
                         </button>
                     `
                       )
@@ -253,22 +281,22 @@ function renderQuestionPage3() {
                 <div class="flex justify-between items-center">
                     ${
                       currentQuestion === 0
-                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-3 rounded-full text-xl hover:bg-gray-400">Home</button>`
-                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-3 rounded-full text-xl hover:bg-gray-400" ${
+                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400">Home</button>`
+                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400" ${
                             currentQuestion === 0 ? 'disabled' : ''
                           }>Previous</button>`
                     }
                     
-                    <div class="w-1/2 bg-gray-200 rounded-full h-4">
+                    <div class="w-1/2 bg-gray-200 rounded-full h-4 mx-2">
                         <div class="bg-pink-600 h-4 rounded-full" style="width: ${progress}%"></div>
                     </div>
                     ${
                       answers[currentQuestion] == '' ||
                       answersStar[currentQuestion] == ''
-                        ? `<button  class=" bg-[#0f513a] text-white px-6 py-3 rounded-full text-xl hover:bg-pink-600">
+                        ? `<button  class=" bg-[#0f513a] text-white px-6 py-2 rounded-full text-xl hover:bg-pink-600">
                        Required
                     </button>`
-                        : `<button onclick="nextQuestion()"  class=" bg-[#0f513a] text-white px-6 py-3 rounded-full text-xl hover:bg-pink-600">
+                        : `<button onclick="nextQuestion()"  class=" bg-[#0f513a] text-white px-6 py-2 rounded-full text-xl hover:bg-pink-600">
                         ${currentQuestion === questions - 1 ? 'Submit' : 'Next'}
                     </button>`
                     }
@@ -282,8 +310,8 @@ function renderQuestionPage4() {
   app.innerHTML = `
             <div class="flex flex-col h-full p-8">
                 <img src="logo.png" alt="Logo" class="mb-8 w-24 self-center">
-                <h2 class="text-3xl font-bold mb-8 text-center">${'Recommendations and Feedback (ข้อเสนอแนะ/ติชม)'}</h2>
-                <div class="space-y-4 mb-8 flex-grow">
+                <h2 class="text-xl font-bold mb-8 text-center">${'Recommendations and Feedback (ข้อเสนอแนะ/ติชม)'}</h2>
+                <div class="space-y-2 mb-8 flex-grow">
                     <textarea id="feedbackInput" class="w-full h-32 p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent"></textarea>
                 </div>
                 
@@ -292,16 +320,16 @@ function renderQuestionPage4() {
                 <div class="flex justify-between items-center">
                     ${
                       currentQuestion === 0
-                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-3 rounded-full text-xl hover:bg-gray-400">Home</button>`
-                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-3 rounded-full text-xl hover:bg-gray-400" ${
+                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400">Home</button>`
+                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400" ${
                             currentQuestion === 0 ? 'disabled' : ''
                           }>Previous</button>`
                     }
                     
-                    <div class="w-1/2 bg-gray-200 rounded-full h-4">
+                    <div class="w-1/2 bg-gray-200 rounded-full h-4 mx-2">
                         <div class="bg-pink-600 h-4 rounded-full" style="width: ${progress}%"></div>
                     </div>
-                    <button onclick="nextQuestion()" class="bg-[#0f513a] text-white px-6 py-3 rounded-full text-xl hover:bg-pink-600">
+                    <button onclick="nextQuestion()" class="bg-[#0f513a] text-white px-6 py-2 rounded-full text-xl hover:bg-pink-600">
                         ${currentQuestion === questions - 1 ? 'Submit' : 'Next'}
                     </button>
                 </div>
@@ -312,12 +340,14 @@ function renderQuestionPage4() {
 function renderThanksPage() {
   app.innerHTML = `
         <div class="flex flex-col items-center justify-center h-full p-8">
-            <img src="logo.png" alt="Logo" class="mb-8 w-40">
-            <h1 class="text-4xl font-bold text-center mb-6">" Thank you for being part of our development."</h1>
+            <img src="logo.png" alt="Logo" class="mb-6 w-28">
+            <h1 class="text-xl font-bold text-center mb-3">" Thank you for being part
+            of our development."</h1>
             <br><br>
-            <p class="text-2xl text-center mb-12 text-[#ff668f]">We will fulfill our promise to continually provide better quality service.</p>
+            <p class="text-xl text-center mb-6 text-[#ff668f]">We will fulfill our promise to continually provide
+            better quality service.</p>
 
-            <button onclick="goToStart(reset=true)" class="w-full max-w-md bg-[#0f513a] text-white py-4 rounded-full text-2xl hover:bg-pink-600">Review</button>
+            <button onclick="goToStart(reset=true)" class="w-full max-w-md bg-[#0f513a] text-white py-2 rounded-full text-xl hover:bg-pink-600">Review</button>
         </div>
     `;
 }
@@ -334,8 +364,13 @@ function startSurvey() {
 
 function answerQuestion(answer) {
   answers[currentQuestion] = answer;
+  console.log(answers);
+  console.log(answersOther);
+  console.log(answersStar);
+
   if (currentQuestion === 0) {
     renderQuestionPage1();
+    nextQuestion();
   } else if (currentQuestion === 1) {
     try {
       const val = document.getElementById('other1').value;
@@ -344,6 +379,12 @@ function answerQuestion(answer) {
       console.log(error);
     }
     renderQuestionPage2();
+    if (
+      answers[currentQuestion] == 'None' ||
+      answersStar[currentQuestion] != ''
+    ) {
+      nextQuestion();
+    }
   } else if (currentQuestion === 2) {
     try {
       const val = document.getElementById('other2').value;
@@ -352,12 +393,19 @@ function answerQuestion(answer) {
       console.log(error);
     }
     renderQuestionPage3();
+    if (
+      answers[currentQuestion] == 'None' ||
+      answersStar[currentQuestion] != ''
+    ) {
+      nextQuestion();
+    }
   } else if (currentQuestion === 3) {
     renderQuestionPage4();
   }
 }
 function answerQuestionStar(answer) {
   answersStar[currentQuestion] = answer;
+
   if (currentQuestion === 0) {
     renderQuestionPage1();
   } else if (currentQuestion === 1) {
@@ -368,6 +416,12 @@ function answerQuestionStar(answer) {
       console.log(error);
     }
     renderQuestionPage2();
+    if (
+      answers[currentQuestion] != 'None' &&
+      answersStar[currentQuestion] != ''
+    ) {
+      nextQuestion();
+    }
   } else if (currentQuestion === 2) {
     try {
       const val = document.getElementById('other2').value;
@@ -376,6 +430,12 @@ function answerQuestionStar(answer) {
       console.log(error);
     }
     renderQuestionPage3();
+    if (
+      answers[currentQuestion] != 'None' &&
+      answersStar[currentQuestion] != ''
+    ) {
+      nextQuestion();
+    }
   } else if (currentQuestion === 3) {
     renderQuestionPage4();
   }
@@ -478,6 +538,6 @@ function goToStart(reset = false) {
 
 // startSurvey();
 
-// currentPage = 'question4';
-// currentQuestion = 3;
+currentPage = 'question2';
+currentQuestion = 1;
 renderPage();
