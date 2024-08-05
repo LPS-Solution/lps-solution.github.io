@@ -358,8 +358,16 @@ function getFeedBack() {
 }
 
 function startSurvey() {
-  currentPage = 'question1';
-  renderPage();
+  document.getElementById('loadingModal').classList.remove('hidden');
+  document.getElementById('loadingModal').classList.add('block');
+
+  setTimeout(() => {
+    currentPage = 'question1';
+    renderPage();
+
+    document.getElementById('loadingModal').classList.remove('block');
+    document.getElementById('loadingModal').classList.add('hidden');
+  }, 500);
 }
 
 function answerQuestion(answer) {
@@ -442,29 +450,33 @@ function answerQuestionStar(answer) {
 }
 
 function nextQuestion() {
-  //   if (currentQuestion < questions - 1) {
-  //     currentQuestion++;
-  //     renderPage();
-  //   }
-  if (currentQuestion === 3) {
-    getFeedBack();
-  }
+  document.getElementById('loadingModal').classList.remove('hidden');
+  document.getElementById('loadingModal').classList.add('block');
 
-  if (currentQuestion === 0) {
-    currentQuestion++;
-    currentPage = 'question2';
-    renderPage();
-  } else if (currentQuestion === 1) {
-    currentQuestion++;
-    currentPage = 'question3';
-    renderPage();
-  } else if (currentQuestion === 2) {
-    currentQuestion++;
-    currentPage = 'question4';
-    renderPage();
-  } else {
-    submitSurvey();
-  }
+  setTimeout(() => {
+    if (currentQuestion === 3) {
+      getFeedBack();
+    }
+
+    if (currentQuestion === 0) {
+      currentQuestion++;
+      currentPage = 'question2';
+      renderPage();
+    } else if (currentQuestion === 1) {
+      currentQuestion++;
+      currentPage = 'question3';
+      renderPage();
+    } else if (currentQuestion === 2) {
+      currentQuestion++;
+      currentPage = 'question4';
+      renderPage();
+    } else {
+      submitSurvey();
+    }
+
+    document.getElementById('loadingModal').classList.remove('block');
+    document.getElementById('loadingModal').classList.add('hidden');
+  }, 500);
 }
 
 function previousQuestion() {
