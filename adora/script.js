@@ -538,6 +538,6 @@ function goToStart(reset = false) {
 
 // startSurvey();
 
-currentPage = 'question3';
-currentQuestion = 2;
+// currentPage = 'question3';
+// currentQuestion = 2;
 renderPage();
