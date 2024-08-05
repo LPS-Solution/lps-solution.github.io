@@ -10,20 +10,20 @@ let answersStar = ['', '', '', ''];
 
 function getButtonClass(option) {
   if (answers[currentQuestion] === option) {
-    return 'w-full bg-[#0f513a] text-white py-2 rounded-lg text-xl hover:bg-[#0f513a] text-white font-Noto';
+    return 'w-full bg-[#0f513a] text-white py-1 rounded-lg text-xl hover:bg-[#0f513a] text-white font-Noto';
   }
-  return 'w-full bg-[#ff668f25] text-[#ff668f] py-2 rounded-lg text-xl hover:bg-gray-300 font-Noto';
+  return 'w-full bg-[#ff668f25] text-[#ff668f] py-1 rounded-lg text-xl hover:bg-gray-300 font-Noto';
 }
 function getButtonNone(option) {
   if (answers[currentQuestion] === option) {
-    return 'w-full bg-[#0f513a] text-white py-2 rounded-lg text-xl hover:bg-[#0f513a] text-white font-Noto';
+    return 'w-full bg-[#0f513a] text-white py-1 rounded-lg text-xl hover:bg-[#0f513a] text-white font-Noto';
   }
-  return 'w-full bg-[#808080] text-[#000] py-2 rounded-lg text-xl hover:bg-gray-300 font-Noto';
+  return 'w-full bg-[#808080] text-[#000] py-1 rounded-lg text-xl hover:bg-gray-300 font-Noto';
 }
 
 function getButtonClassStar(option) {
   if (answersStar[currentQuestion] === option) {
-    return 'w-[15%] bg-[#0f513a] text-white p-2 rounded-lg text-xl hover:bg-[#0f513a] text-white font-Noto';
+    return 'w-[15%] bg-[#0f513a] text-white p-1 rounded-lg text-xl hover:bg-[#0f513a] text-white font-Noto';
   }
   return 'w-[15%] bg-[#ff668f00] text-[#ff668f] p-4 rounded-lg text-xl hover:bg-gray-300 font-Noto';
 }
@@ -58,11 +58,11 @@ function renderStartPage() {
   /*<div class="flex flex-col h-full p-8">*/
   app.innerHTML = `
          <div class="flex flex-col items-center h-full p-8">
-            <img src="logo.png" alt="Logo" class="mb-8 w-28 self-center">
+            <img src="logo.png" alt="Logo" class="mb-4 w-20 self-center">
        
-            <h1 class="text-2xl font-bold text-center mb-6">ADORA service feedback</h1>
+            <h1 class="text-xl font-bold text-center mb-3">ADORA service feedback</h1>
 
-            <p class="text-xl text-center mb-12 text-[#ff668f]">
+            <p class="text-lg text-center mb-4 text-[#ff668f]">
             We believe that 'Nothing is more important than
             the quality of service
             Thank you for taking the time to help improve
@@ -80,7 +80,7 @@ function renderStartPage() {
             </p>
             
             <div class="w-full flex justify-center">
-            <button onclick="startSurvey()" class="w-full  mb-6 rounded-full max-w-md bg-[#0f513a] text-white py-2 text-xl  hover:bg-pink-500">Start</button>
+            <button onclick="startSurvey()" class="w-full  mb-2 rounded-full max-w-md bg-[#0f513a] text-white py-2 text-xl  hover:bg-pink-500">Start</button>
 
             </div>
 
@@ -101,9 +101,9 @@ function renderQuestionPage1() {
 
   app.innerHTML = `
           <div class="flex flex-col h-full p-8">
-              <img src="logo.png" alt="Logo" class="mb-8 w-24 self-center">
-              <h2 class="text-xl font-bold mb-8 text-center">${'Type of service? ประเภทบริการ'}</h2>
-              <div class="space-y-2 mb-8 flex-grow">
+              <img src="logo.png" alt="Logo" class="mb-4 w-20 self-center">
+              <h2 class="text-xl font-bold mb-4 text-center">${'Type of service? ประเภทบริการ'}</h2>
+              <div class="space-y-2 mb-4 flex-grow">
                   ${options
                     .map(
                       (option) => `
@@ -148,9 +148,9 @@ function renderQuestionPage2() {
 
   app.innerHTML = `
             <div class="flex flex-col h-full p-8">
-                <img src="logo.png" alt="Logo" class="mb-8 w-24 self-center">
-                <h2 class="text-xl font-bold mb-8 text-center">${'Staff’s name? ชื่อพนักงาน'}</h2>
-                <div class="space-y-2 mb-8 flex-grow">
+                <img src="logo.png" alt="Logo" class="mb-4 w-20 self-center">
+                <h2 class="text-xl font-bold mb-4 text-center">${'Staff’s name? ชื่อพนักงาน'}</h2>
+                <div class="space-y-2 mb-4 flex-grow">
                     ${options
                       .map((option) =>
                         option == 'None'
@@ -178,8 +178,8 @@ function renderQuestionPage2() {
                       
                 </div>
                 
-                <h2 class="text-xl font-bold mb-8 text-center">Rate if Service คะแนนการบริการ</h2>
-                <div class="w-full space-y-2 mb-8 flex-grow text-center">
+                <h2 class="text-xl font-bold text-center">Rate if Service คะแนนการบริการ</h2>
+                <div class="w-full space-y-2 mb-4 flex-grow text-center">
                     ${['1', '2', '3', '4', '5']
                       .map(
                         (option) => `
@@ -209,10 +209,10 @@ function renderQuestionPage2() {
                     ${
                       answers[currentQuestion] == '' ||
                       answersStar[currentQuestion] == ''
-                        ? `<button  class=" bg-[#0f513a] text-white px-6 py-2 rounded-full text-xl hover:bg-pink-600">
+                        ? `<button  class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
                        Required
                     </button>`
-                        : `<button onclick="nextQuestion()"  class=" bg-[#0f513a] text-white px-6 py-2 rounded-full text-xl hover:bg-pink-600">
+                        : `<button onclick="nextQuestion()"  class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
                         ${currentQuestion === questions - 1 ? 'Submit' : 'Next'}
                     </button>`
                     }
@@ -234,9 +234,9 @@ function renderQuestionPage3() {
 
   app.innerHTML = `
             <div class="flex flex-col h-full p-8">
-                <img src="logo.png" alt="Logo" class="mb-8 w-24 self-center">
-                <h2 class="text-xl font-bold mb-8 text-center">${'Doctor’s name? ชื่อคณุหมอ'}</h2>
-                <div class="space-y-2 mb-8 flex-grow">
+                <img src="logo.png" alt="Logo" class="mb-4 w-20 self-center">
+                <h2 class="text-xl font-bold mb-4 text-center">${'Doctor’s name? ชื่อคณุหมอ'}</h2>
+                <div class="space-y-2 mb-4 flex-grow">
                     ${options
                       .map((option) =>
                         option == 'None'
@@ -263,8 +263,8 @@ function renderQuestionPage3() {
                       }
                 </div>
                 
-                <h2 class="text-xl font-bold mb-8 text-center">Rate if Service คะแนนการบริการ</h2>
-                <div class="w-full space-y-2 mb-8 flex-grow text-center">
+                <h2 class="text-xl font-bold text-center">Rate if Service คะแนนการบริการ</h2>
+                <div class="w-full space-y-2 mb-4 flex-grow text-center">
                     ${['1', '2', '3', '4', '5']
                       .map(
                         (option) => `
@@ -293,10 +293,10 @@ function renderQuestionPage3() {
                     ${
                       answers[currentQuestion] == '' ||
                       answersStar[currentQuestion] == ''
-                        ? `<button  class=" bg-[#0f513a] text-white px-6 py-2 rounded-full text-xl hover:bg-pink-600">
+                        ? `<button  class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
                        Required
                     </button>`
-                        : `<button onclick="nextQuestion()"  class=" bg-[#0f513a] text-white px-6 py-2 rounded-full text-xl hover:bg-pink-600">
+                        : `<button onclick="nextQuestion()"  class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
                         ${currentQuestion === questions - 1 ? 'Submit' : 'Next'}
                     </button>`
                     }
@@ -309,9 +309,9 @@ function renderQuestionPage4() {
 
   app.innerHTML = `
             <div class="flex flex-col h-full p-8">
-                <img src="logo.png" alt="Logo" class="mb-8 w-24 self-center">
-                <h2 class="text-xl font-bold mb-8 text-center">${'Recommendations and Feedback (ข้อเสนอแนะ/ติชม)'}</h2>
-                <div class="space-y-2 mb-8 flex-grow">
+                <img src="logo.png" alt="Logo" class="mb-4 w-20 self-center">
+                <h2 class="text-xl font-bold mb-4 text-center">${'Recommendations and Feedback (ข้อเสนอแนะ/ติชม)'}</h2>
+                <div class="space-y-2 mb-4 flex-grow">
                     <textarea id="feedbackInput" class="w-full h-32 p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent"></textarea>
                 </div>
                 
@@ -321,7 +321,7 @@ function renderQuestionPage4() {
                     ${
                       currentQuestion === 0
                         ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400">Home</button>`
-                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400" ${
+                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400" ${
                             currentQuestion === 0 ? 'disabled' : ''
                           }>Previous</button>`
                     }
@@ -329,7 +329,7 @@ function renderQuestionPage4() {
                     <div class="w-1/2 bg-gray-200 rounded-full h-4 mx-2">
                         <div class="bg-pink-600 h-4 rounded-full" style="width: ${progress}%"></div>
                     </div>
-                    <button onclick="nextQuestion()" class="bg-[#0f513a] text-white px-6 py-2 rounded-full text-xl hover:bg-pink-600">
+                    <button onclick="nextQuestion()" class="bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
                         ${currentQuestion === questions - 1 ? 'Submit' : 'Next'}
                     </button>
                 </div>
@@ -340,10 +340,10 @@ function renderQuestionPage4() {
 function renderThanksPage() {
   app.innerHTML = `
         <div class="flex flex-col items-center justify-center h-full p-8">
-            <img src="logo.png" alt="Logo" class="mb-6 w-28">
+            <img src="logo.png" alt="Logo" class="mb-6 w-20">
             <h1 class="text-xl font-bold text-center mb-3">" Thank you for being part
             of our development."</h1>
-            <br><br>
+            
             <p class="text-xl text-center mb-6 text-[#ff668f]">We will fulfill our promise to continually provide
             better quality service.</p>
 
@@ -538,6 +538,6 @@ function goToStart(reset = false) {
 
 // startSurvey();
 
-// currentPage = 'question2';
-// currentQuestion = 1;
+currentPage = 'question3';
+currentQuestion = 2;
 renderPage();
