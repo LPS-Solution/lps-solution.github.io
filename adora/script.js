@@ -49,9 +49,12 @@ function renderPage() {
 }
 
 function renderStartPage() {
+  /*<div class="flex flex-col h-full p-8">*/
   app.innerHTML = `
-        <div class="flex flex-col items-center justify-center h-full p-8">
-            <img src="logo.png" alt="Logo" class="mb-8 w-40">
+         <div class="flex flex-col items-center h-full p-8">
+            <img src="logo.png" alt="Logo" class="mb-8 w-40 self-center">
+       
+        
 
             <h1 class="text-4xl font-bold text-center mb-6">ADORA service feedback</h1>
 
@@ -70,9 +73,13 @@ function renderStartPage() {
             ตนของผู้ให้ feedback ได้
             คุณลุกค้าสามารถให้คำติชมอย่างตรงไปตรงมาเพื่อ
             การพัฒนาบริการอย่างยั่งยืน
-            Start</p>
+            </p>
+            
+            <div class="w-full flex justify-center">
+            <button onclick="startSurvey()" class="w-full  mb-6 rounded-full max-w-md bg-[#0f513a] text-white py-4 text-2xl  hover:bg-pink-500">Start</button>
 
-            <button onclick="startSurvey()" class="w-full rounded-full max-w-md bg-[#0f513a] text-white py-4 text-2xl hover:bg-pink-500">Start</button>
+            </div>
+
         </div>
     `;
 }
@@ -435,36 +442,27 @@ function previousQuestion() {
 function submitSurvey() {
   console.log('Submit:', answers, answersStar, answersOther);
 
-  //   fetch(
-  //     'https://script.google.com/macros/s/AKfycbwNHH24InlmP_pkgAMk4kDXctNe9GBb2XdbPtkPvJHrzJqc8LkhdB7O-tHbtjk6L-IRDg/exec',
-  //     {
-  //       method: 'POST',
-  //       body: JSON.stringify({
-  //         data: [1, 2, 3, 'test'],
-  //       }),
-  //       headers: {
-  //         'Content-type': 'application/json; charset=UTF-8',
-  //       },
-  //     }
-  //   );
-
-  const myHeaders = new Headers();
-  myHeaders.append('Content-Type', 'application/json');
-
-  const raw = JSON.stringify({
-    data: [[1, 2, 2]],
-  });
-
-  const requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow',
-  };
-
   fetch(
     'https://script.google.com/macros/s/AKfycbwNHH24InlmP_pkgAMk4kDXctNe9GBb2XdbPtkPvJHrzJqc8LkhdB7O-tHbtjk6L-IRDg/exec',
-    requestOptions
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        data: [
+          [
+            new Date().toISOString(),
+            answers[0],
+            answers[1].includes('Other') ? answersOther[1] : answers[1],
+            answersStar[1],
+            answers[2].includes('Other') ? answersOther[2] : answers[2],
+            answersStar[2],
+            answers[3],
+          ],
+        ],
+      }),
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8',
+      },
+    }
   )
     .then((response) => response.text())
     .then((result) => console.log(result))
@@ -488,6 +486,6 @@ function goToStart(reset = false) {
 
 // startSurvey();
 
-currentPage = 'question4';
-currentQuestion = 3;
+// currentPage = 'question4';
+// currentQuestion = 3;
 renderPage();
