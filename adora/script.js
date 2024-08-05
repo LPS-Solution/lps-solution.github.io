@@ -59,20 +59,14 @@ function renderStartPage() {
             <h1 class="text-4xl font-bold text-center mb-6">ADORA service feedback</h1>
 
             <p class="text-2xl text-center mb-12 text-[#ff668f]">
-            We believe that 'Nothing is more important than
-            the quality of service
-            Thank you for taking the time to help improve
-            the quality of our service.
-            Don't worry!!! The staff cannot know your
-            identity.
+            We believe that 'Nothing is more important than the quality of service"
+            <br>
+            Thank you for taking the time to help improve the quality of our service.
+            Don't worry!!! The staff cannot know your identity.
             <br><br>
-            Please certainly give us honest feedback for
-            sustainable service quality development.
+            Please certainly give us honest feedback for sustainable service quality development.
             <br><br>
-            ไม่ต้องกังวล!!! พนักงานของเราไม่สามารถทราบถึงตัว
-            ตนของผู้ให้ feedback ได้
-            คุณลุกค้าสามารถให้คำติชมอย่างตรงไปตรงมาเพื่อ
-            การพัฒนาบริการอย่างยั่งยืน
+            ไม่ต้องกังวล!!! พนักงานของเราไม่สามารถทราบถึงตัวตนของผู้ให้ feedback ได้ คุณลูกค้าสามารถให้คำติชมอย่างตรงไปตรงมาเพื่อการพัฒนาบริการอย่างยั่งยืน
             </p>
             
             <div class="w-full flex justify-center">
@@ -319,11 +313,9 @@ function renderThanksPage() {
   app.innerHTML = `
         <div class="flex flex-col items-center justify-center h-full p-8">
             <img src="logo.png" alt="Logo" class="mb-8 w-40">
-            <h1 class="text-4xl font-bold text-center mb-6">" Thank you for being part
-            of our development."</h1>
+            <h1 class="text-4xl font-bold text-center mb-6">" Thank you for being part of our development."</h1>
             <br><br>
-            <p class="text-2xl text-center mb-12 text-[#ff668f]">We will fulfill our promise to continually provide
-            better quality service.</p>
+            <p class="text-2xl text-center mb-12 text-[#ff668f]">We will fulfill our promise to continually provide better quality service.</p>
 
             <button onclick="goToStart(reset=true)" class="w-full max-w-md bg-[#0f513a] text-white py-4 rounded-full text-2xl hover:bg-pink-600">Review</button>
         </div>
