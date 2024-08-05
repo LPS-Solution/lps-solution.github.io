@@ -197,8 +197,8 @@ function renderQuestionPage2() {
                 <div class="flex justify-between items-center">
                     ${
                       currentQuestion === 0
-                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400">Home</button>`
-                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400" ${
+                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400">Home</button>`
+                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400" ${
                             currentQuestion === 0 ? 'disabled' : ''
                           }>Previous</button>`
                     }
@@ -281,8 +281,8 @@ function renderQuestionPage3() {
                 <div class="flex justify-between items-center">
                     ${
                       currentQuestion === 0
-                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400">Home</button>`
-                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400" ${
+                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400">Home</button>`
+                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400" ${
                             currentQuestion === 0 ? 'disabled' : ''
                           }>Previous</button>`
                     }
@@ -320,7 +320,7 @@ function renderQuestionPage4() {
                 <div class="flex justify-between items-center">
                     ${
                       currentQuestion === 0
-                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-2 rounded-full text-xl hover:bg-gray-400">Home</button>`
+                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400">Home</button>`
                         : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400" ${
                             currentQuestion === 0 ? 'disabled' : ''
                           }>Previous</button>`
