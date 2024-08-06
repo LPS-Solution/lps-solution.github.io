@@ -142,7 +142,6 @@ function renderQuestionPage2() {
     'K.Jane คุณแจน',
     'K.Pim คุณแจน',
     'K.Namwaan คุณแจน',
-    'None',
     'Other อื่นๆ',
   ];
 
@@ -169,12 +168,21 @@ function renderQuestionPage2() {
                         </button>
                     `
                       )
+
                       .join('')}
                     ${
                       answers[currentQuestion].includes('Other')
                         ? `<input value='${answersOther[currentQuestion]}' id="other1" type="text" class="w-full border border-pink-500 rounded-lg px-4 py-4" placeholder="Other"></input>`
                         : ''
                     }
+
+                    ${`
+                        <button onclick="answerQuestion('None')" class="${getButtonNone(
+                          'None'
+                        )}">
+                            None
+                        </button>
+                    `}     
                       
                 </div>
                 
@@ -207,14 +215,29 @@ function renderQuestionPage2() {
                         <div class="bg-pink-600 h-4 rounded-full" style="width: ${progress}%"></div>
                     </div>
                     ${
-                      answers[currentQuestion] == '' ||
+                      answers[currentQuestion] == '' &&
                       answersStar[currentQuestion] == ''
-                        ? `<button  class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
-                       Required
+                        ? `<button onclick="answerQuestion('None')" class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
+                       Next
                     </button>`
-                        : `<button onclick="nextQuestion()"  class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
-                        ${currentQuestion === questions - 1 ? 'Submit' : 'Next'}
-                    </button>`
+                        : answers[currentQuestion] != '' &&
+                          answersStar[currentQuestion] == ''
+                        ? `<button onclick="alert('โปรดให้คะแนนการบริการก่อนค่ะ')" class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
+                      Next
+                  </button>`
+                        : answers[currentQuestion] == '' &&
+                          answersStar[currentQuestion] != ''
+                        ? `<button onclick="alert('โปรดเลือกชื่อก่อนค่ะ')" class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
+                      Next
+                  </button>`
+                        : answers[currentQuestion].includes('Other') &&
+                          answersStar[currentQuestion] != ''
+                        ? `<button onclick="answerQuestion('Other')" class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
+                    Next
+                </button>`
+                        : `<button onclick="nextQuestion()" class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
+                      Next
+                  </button>`
                     }
                     
                 </div>
@@ -228,7 +251,6 @@ function renderQuestionPage3() {
     'Dr.Bow หมอโบว์',
     'Dr.Namcha หมอน้ำชา',
     'Dr.Kay หมอเคย์',
-    'None',
     'Other อื่นๆ',
   ];
 
@@ -261,6 +283,13 @@ function renderQuestionPage3() {
                           ? `<input value='${answersOther[currentQuestion]}' id="other2" type="text" class="w-full border border-pink-500 rounded-lg px-4 py-4" placeholder="Other"></input>`
                           : ''
                       }
+                      ${`
+                        <button onclick="answerQuestion('None')" class="${getButtonNone(
+                          'None'
+                        )}">
+                            None
+                        </button>
+                    `}     
                 </div>
                 
                 <h2 class="text-xl font-bold text-center">Rate if Service คะแนนการบริการ</h2>
@@ -291,14 +320,29 @@ function renderQuestionPage3() {
                         <div class="bg-pink-600 h-4 rounded-full" style="width: ${progress}%"></div>
                     </div>
                     ${
-                      answers[currentQuestion] == '' ||
+                      answers[currentQuestion] == '' &&
                       answersStar[currentQuestion] == ''
-                        ? `<button  class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
-                       Required
+                        ? `<button onclick="answerQuestion('None')" class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
+                       Next
                     </button>`
-                        : `<button onclick="nextQuestion()"  class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
-                        ${currentQuestion === questions - 1 ? 'Submit' : 'Next'}
-                    </button>`
+                        : answers[currentQuestion] != '' &&
+                          answersStar[currentQuestion] == ''
+                        ? `<button onclick="alert('โปรดให้คะแนนการบริการก่อนค่ะ')" class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
+                      Next
+                  </button>`
+                        : answers[currentQuestion] == '' &&
+                          answersStar[currentQuestion] != ''
+                        ? `<button onclick="alert('โปรดเลือกชื่อก่อนค่ะ')" class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
+                      Next
+                  </button>`
+                        : answers[currentQuestion].includes('Other') &&
+                          answersStar[currentQuestion] != ''
+                        ? `<button onclick="answerQuestion('Other')" class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
+                    Next
+                </button>`
+                        : `<button onclick="nextQuestion()" class=" bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
+                      Next
+                  </button>`
                     }
                 </div>
             </div>
@@ -308,7 +352,7 @@ function renderQuestionPage4() {
   const progress = ((currentQuestion + 1) / questions) * 100;
 
   app.innerHTML = `
-            <div class="flex flex-col items-center justify-center h-full p-8">
+            <div class="flex flex-col h-full p-8">
                 <img src="logo.png" alt="Logo" class="mb-4 w-20 self-center">
                 <h2 class="text-xl font-bold mb-4 text-center">${'Recommendations and Feedback (ข้อเสนอแนะ/ติชม)'}</h2>
                 <div class="space-y-2 mb-4  w-full">
@@ -386,9 +430,6 @@ function startSurvey() {
 
 function answerQuestion(answer) {
   answers[currentQuestion] = answer;
-  console.log(answers);
-  console.log(answersOther);
-  console.log(answersStar);
 
   if (currentQuestion === 0) {
     renderQuestionPage1();
@@ -401,11 +442,21 @@ function answerQuestion(answer) {
       console.log(error);
     }
     renderQuestionPage2();
-    if (
-      answers[currentQuestion] == 'None' ||
-      answersStar[currentQuestion] != ''
-    ) {
-      nextQuestion();
+    if (!answers[currentQuestion].includes('Other')) {
+      if (
+        (answers[currentQuestion] != '' &&
+          answersStar[currentQuestion] != '') ||
+        answers[currentQuestion] == 'None'
+      ) {
+        nextQuestion();
+      }
+    } else {
+      if (
+        answersOther[currentQuestion] != '' &&
+        answersStar[currentQuestion] != ''
+      ) {
+        nextQuestion();
+      }
     }
   } else if (currentQuestion === 2) {
     try {
@@ -415,15 +466,28 @@ function answerQuestion(answer) {
       console.log(error);
     }
     renderQuestionPage3();
-    if (
-      answers[currentQuestion] == 'None' ||
-      answersStar[currentQuestion] != ''
-    ) {
-      nextQuestion();
+    if (!answers[currentQuestion].includes('Other')) {
+      if (
+        (answers[currentQuestion] != '' &&
+          answersStar[currentQuestion] != '') ||
+        answers[currentQuestion] == 'None'
+      ) {
+        nextQuestion();
+      }
+    } else {
+      if (
+        answersOther[currentQuestion] != '' &&
+        answersStar[currentQuestion] != ''
+      ) {
+        nextQuestion();
+      }
     }
   } else if (currentQuestion === 3) {
     renderQuestionPage4();
   }
+  console.log(answers);
+  console.log(answersOther);
+  console.log(answersStar);
 }
 function answerQuestionStar(answer) {
   answersStar[currentQuestion] = answer;
@@ -438,8 +502,21 @@ function answerQuestionStar(answer) {
       console.log(error);
     }
     renderQuestionPage2();
-    if (answers[currentQuestion] != '' && answersStar[currentQuestion] != '') {
-      nextQuestion();
+    if (!answers[currentQuestion].includes('Other')) {
+      if (
+        (answers[currentQuestion] != '' &&
+          answersStar[currentQuestion] != '') ||
+        answers[currentQuestion] == 'None'
+      ) {
+        nextQuestion();
+      }
+    } else {
+      if (
+        answersOther[currentQuestion] != '' &&
+        answersStar[currentQuestion] != ''
+      ) {
+        nextQuestion();
+      }
     }
   } else if (currentQuestion === 2) {
     try {
@@ -449,8 +526,21 @@ function answerQuestionStar(answer) {
       console.log(error);
     }
     renderQuestionPage3();
-    if (answers[currentQuestion] != '' && answersStar[currentQuestion] != '') {
-      nextQuestion();
+    if (!answers[currentQuestion].includes('Other')) {
+      if (
+        (answers[currentQuestion] != '' &&
+          answersStar[currentQuestion] != '') ||
+        answers[currentQuestion] == 'None'
+      ) {
+        nextQuestion();
+      }
+    } else {
+      if (
+        answersOther[currentQuestion] != '' &&
+        answersStar[currentQuestion] != ''
+      ) {
+        nextQuestion();
+      }
     }
   } else if (currentQuestion === 3) {
     renderQuestionPage4();
@@ -556,8 +646,11 @@ function goToStart(reset = false) {
   renderPage();
 }
 
+function alert(tag) {
+  Swal.fire(tag);
+}
 // startSurvey();
 
-// currentPage = 'question4';
-// currentQuestion = 3;
+// currentPage = 'question2';
+// currentQuestion = 1;
 renderPage();
