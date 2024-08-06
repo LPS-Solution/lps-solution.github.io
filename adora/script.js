@@ -122,7 +122,7 @@ function renderQuestionPage1() {
                       ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400">Home</button>`
                       : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400" ${
                           currentQuestion === 0 ? 'disabled' : ''
-                        }>Previous</button>`
+                        }>Back</button>`
                   }
                   
                   <div class="w-1/2 bg-gray-200 rounded-full h-4 mx-2">
@@ -200,7 +200,7 @@ function renderQuestionPage2() {
                         ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400">Home</button>`
                         : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400" ${
                             currentQuestion === 0 ? 'disabled' : ''
-                          }>Previous</button>`
+                          }>Back</button>`
                     }
                     
                     <div class="w-1/2 bg-gray-200 rounded-full h-4 mx-2">
@@ -284,7 +284,7 @@ function renderQuestionPage3() {
                         ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400">Home</button>`
                         : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400" ${
                             currentQuestion === 0 ? 'disabled' : ''
-                          }>Previous</button>`
+                          }>Back</button>`
                     }
                     
                     <div class="w-1/2 bg-gray-200 rounded-full h-4 mx-2">
@@ -308,33 +308,47 @@ function renderQuestionPage4() {
   const progress = ((currentQuestion + 1) / questions) * 100;
 
   app.innerHTML = `
-            <div class="flex flex-col h-full p-8">
+            <div class="flex flex-col items-center justify-center h-full p-8">
                 <img src="logo.png" alt="Logo" class="mb-4 w-20 self-center">
                 <h2 class="text-xl font-bold mb-4 text-center">${'Recommendations and Feedback (ข้อเสนอแนะ/ติชม)'}</h2>
-                <div class="space-y-2 mb-4 flex-grow">
+                <div class="space-y-2 mb-4  w-full">
                     <textarea id="feedbackInput" class="w-full h-32 p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent"></textarea>
                 </div>
-                
-                
-                
-                <div class="flex justify-between items-center">
-                    ${
-                      currentQuestion === 0
-                        ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400">Home</button>`
-                        : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400" ${
-                            currentQuestion === 0 ? 'disabled' : ''
-                          }>Previous</button>`
-                    }
-                    
-                    <div class="w-1/2 bg-gray-200 rounded-full h-4 mx-2">
-                        <div class="bg-pink-600 h-4 rounded-full" style="width: ${progress}%"></div>
-                    </div>
-                    <button onclick="nextQuestion()" class="bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
-                        ${currentQuestion === questions - 1 ? 'Submit' : 'Next'}
-                    </button>
+
+                <div class="space-y-2 w-full max-w-md mb-4">
+                <button onclick="nextQuestion()" class="w-full max-w-md bg-[#0f513a] text-white py-2 rounded-full text-xl hover:bg-pink-600">
+                ${currentQuestion === questions - 1 ? 'Submit' : 'Next'}
+                </button>
                 </div>
+                
+                ${
+                  currentQuestion === 0
+                    ? `<button onclick="goToStart()"class="w-full max-w-md bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400">Home</button>`
+                    : `<button onclick="previousQuestion()"class="w-full max-w-md bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400" ${
+                        currentQuestion === 0 ? 'disabled' : ''
+                      }>Back</button>`
+                }
+                
+                
+                
             </div>
         `;
+  // <div class="flex justify-between items-center">
+  //             ${
+  //               currentQuestion === 0
+  //                 ? `<button onclick="goToStart()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400">Home</button>`
+  //                 : `<button onclick="previousQuestion()"class="bg-gray-300 px-6 py-1 rounded-full text-xl hover:bg-gray-400" ${
+  //                     currentQuestion === 0 ? 'disabled' : ''
+  //                   }>Back</button>`
+  //             }
+
+  //             <div class="w-1/2 bg-gray-200 rounded-full h-4 mx-2">
+  //                 <div class="bg-pink-600 h-4 rounded-full" style="width: ${progress}%"></div>
+  //             </div>
+  //             <button onclick="nextQuestion()" class="bg-[#0f513a] text-white px-6 py-1 rounded-full text-xl hover:bg-pink-600">
+  //                 ${currentQuestion === questions - 1 ? 'Submit' : 'Next'}
+  //             </button>
+  //         </div>
 }
 
 function renderThanksPage() {
@@ -424,10 +438,7 @@ function answerQuestionStar(answer) {
       console.log(error);
     }
     renderQuestionPage2();
-    if (
-      answers[currentQuestion] != 'None' &&
-      answersStar[currentQuestion] != ''
-    ) {
+    if (answers[currentQuestion] != '' && answersStar[currentQuestion] != '') {
       nextQuestion();
     }
   } else if (currentQuestion === 2) {
@@ -438,10 +449,7 @@ function answerQuestionStar(answer) {
       console.log(error);
     }
     renderQuestionPage3();
-    if (
-      answers[currentQuestion] != 'None' &&
-      answersStar[currentQuestion] != ''
-    ) {
+    if (answers[currentQuestion] != '' && answersStar[currentQuestion] != '') {
       nextQuestion();
     }
   } else if (currentQuestion === 3) {
@@ -550,6 +558,6 @@ function goToStart(reset = false) {
 
 // startSurvey();
 
-// currentPage = 'question3';
-// currentQuestion = 2;
+// currentPage = 'question4';
+// currentQuestion = 3;
 renderPage();
