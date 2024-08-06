@@ -649,7 +649,6 @@ function goToStart(reset = false) {
 function alert(tag) {
   Swal.fire(tag);
 }
-// startSurvey();
 
 // currentPage = 'question2';
 // currentQuestion = 1;
