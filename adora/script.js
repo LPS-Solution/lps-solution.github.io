@@ -1,4 +1,5 @@
 const app = document.getElementById('app');
+console.log('Start Version 1');
 let currentPage = 'start';
 let currentQuestion = 0;
 
